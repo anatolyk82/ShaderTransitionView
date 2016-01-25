@@ -1,0 +1,4 @@
+module ShaderTransitionView
+plugin ShaderTransitionView
+
+STView 1.0 STView.qml
