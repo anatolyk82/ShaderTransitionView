@@ -31,4 +31,39 @@ Window {
     }
 }
 ```
-Here *ShaderTransitionView* is a QML element which provides stack-based navigation model with effects shown above. At this moment it has two methods *push()* and *pop()*. The method *push(...)* takes a string argument - path to a QML file which will be displayed as the next scene. The method *pop()* removes the last page from the stack and displays the previous one.
+Here *STView* is a QML element which provides stack-based navigation model with effects shown above. At this moment it has two methods *push()* and *pop()*. The method *push(...)* takes a string argument - path to a QML file which will be displayed as the next scene. The method *pop()* removes the last page from the stack and displays the previous one.
+
+
+### STView
+
+Properties:
+
+ * *int* **duration** - the property defines how long the animation lasts.
+ * *int* **depth** - the property defines a depth of the stack.
+ * *string* **currentItem** - the property defines a path of the current QML file.
+ * *Array* **shaderEffectOptions** - a javascript array to set options for the current shader effect.
+ * *enum* **shaderEffect** - it defines which shader effects will be applied for the next transition.
+
+
+ Methods:
+
+  * *void* **push(** *string* qmlfile **)** - it puts the next view into the stack. An animation will be applied to change the current view.
+  * *void* **pop()** - it removes the last view from the stack. An animation will be applied to change the current view.
+  * *void* **clear()** - it removes all views from the stack.
+
+
+
+### Shader effects
+
+**ShaderTransitionView.EffectWIND**
+
+Options:
+ * *bool* **forward** - the option defines a direction of animation which will be applied.
+ * *real* **size** - the option defines the size of transition zone during the animation between two views. This variable can take a value from 0.0 to 1.0
+
+
+**ShaderTransitionView.EffectCIRCLEOPEN**
+
+Options:
+ * *bool* **forward** - the option defines a direction of animation which will be applied.
+ * *real* **smoothness** - the option defines how smoothly one view goes into the other during the animation. This variable can take a value from 0.0 to 1.0
