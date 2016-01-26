@@ -32,7 +32,8 @@ PLUGIN_PRIVATE = private/ShaderEffectCircleOpen.qml \
 DISTFILES = qmldir \
     STView.qml \
     $$PLUGIN_PRIVATE \
-    private/ShaderEffectSqueeze.qml
+    private/ShaderEffectSqueeze.qml \
+    README.md
 
 !equals(_PRO_FILE_PWD_, $$OUT_PWD) {
     copy_qmldir.target = $$OUT_PWD/qmldir
