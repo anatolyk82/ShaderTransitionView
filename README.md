@@ -3,7 +3,7 @@
 This is a small QML plugin which provides an easy way to apply different transitions between two QML views in your Qt/QML application.
 
  This short video can show some of those transitions.
-[![ScreenShot](https://img-fotki.yandex.ru/get/45245/603575.21/0_d2efe_bfe3bcf_orig)](
+[![ScreenShot](https://img-fotki.yandex.ru/get/68556/603575.21/0_d2fd4_2407de61_orig)](
 https://youtu.be/oHp6sP0mv0o)
 
 It also shows that the content of QML pages can be various. It doesn't matter whether a QML page has maps or any interactive element such Buttons or ListView for instance or maybe it's just a static picture.
@@ -38,10 +38,10 @@ Here *STView* is a QML element which provides stack-based navigation model with 
 
 Properties:
 
-* *int* **duration** - the property defines how long the animation lasts.
-* *int* **depth** - the property defines the number of items currently pushed onto the stack..
-* *string* **currentItem** - the property defines a path of the current QML file.
-* *Array* **shaderEffectOptions** - a javascript array to set options for the current shader effect.
+* *int* **duration** - the property defines how long the animation lasts (milliseconds).
+* *int* **depth** - the property defines the number of items currently pushed onto the stack.
+* *string* **currentItem** - the property defines the current QML file.
+* *Array* **shaderEffectOptions** - a javascript array to set options for the current transition.
 * *enum* **shaderEffect** - it defines which shader effects will be applied for the next transition.
 
 
@@ -61,6 +61,7 @@ Options:
 * *bool* **forward** - the option defines a direction of animation which will be applied.
 * *real* **size** - the option defines the size of transition zone during the animation between two views. This variable can take a value from 0.0 to 1.0
 
+------------
 
 **ShaderTransitionView.EffectCIRCLEOPEN**
 
@@ -68,45 +69,52 @@ Options:
 * *bool* **forward** - the option defines a direction of animation which will be applied.
 * *real* **smoothness** - the option defines how smoothly one view goes into the other during the animation. This variable can take a value from 0.0 to 1.0
 
+------------
 
 **ShaderTransitionView.EffectPINWHEEL**
 
 Options:
 * *bool* **forward** - the option defines a direction of animation which will be applied.
 
+------------
 
 **ShaderTransitionView.EffectDIRECTIONALWIPE**
 
 Options:
-* *real* **smoothness** -
-* *vector2d* **direction** -
+* *real* **smoothness** - the option defines how smoothly one view goes into the other during the animation. This variable can take a value from 0.0 to 1.0
+* *vector2d* **direction** - it is a 2D vector which defines a direction the animation. The origin is located at the top left side of the screen. For instance, if the **direction** is equal *Qt*.vector2d(1.0, -1.0), the animation goes for the left bottom side to top right side.
 
+------------
 
 **ShaderTransitionView.EffectRADIALWIPE**
 
 Options:
 * *bool* **forward** - the option defines a direction of animation which will be applied.
 
+------------
 
 
 **ShaderTransitionView.EffectPIXELIZE**
 
 Options:
 * *bool* **forward** - the option defines a direction of animation which will be applied.
-* *real* **blocksize** -
+* *real* **blocksize** - the option defines the size of one block. They appear randomly all over the first view replacing it by the next view.
 
+------------
 
 **ShaderTransitionView.EffectFLIP**
 
 Options:
 * *bool* **forward** - the option defines a direction of animation which will be applied.
 
+------------
 
 **ShaderTransitionView.EffectFOLD**
 
 Options:
 * *bool* **forward** - the option defines a direction of animation which will be applied.
 
+------------
 
 **ShaderTransitionView.EffectDOORWAY**
 
@@ -116,29 +124,36 @@ Options:
 * *real* **perspective** -
 * *real* **depth** -
 
+------------
 
 **ShaderTransitionView.EffectFADECOLOR**
 
 Options:
 * *bool* **forward** - the option defines a direction of animation which will be applied.
-* *real* **colorPhase** -
-* *vector3d* **color** -
+* *vector3d* **color** - the option defines which color overshadows one view replacing it by another. The option takes a 3D vector. Each component of the vector defines a color in RGB in range from 0.0 to 1.0. For instance *Qt*.vector3d( 1.0, 0.0, 0.0 ) defines a red color.
+* *real* **colorPhase** - it defines an intensity of an overshadowing color. It can take values from 0.0 to 1.0.
 
+------------
 
 **ShaderTransitionView.EffectMORPH**
 
 Options:
 * *bool* **forward** - the option defines a direction of animation which will be applied.
-* *real* **strength** -
+* *real* **strength** - the option defines an intensity of this animation.
 
+------------
 
 **ShaderTransitionView.EffectPOLKADOTS**
 
 Options:
 * *bool* **forward** - the option defines a direction of animation which will be applied.
-* *real* **dots** -
+* *real* **dots** - the option defines how many expanding dots appear on the first view replacing it by the second one.
+
+------------
 
 **ShaderTransitionView.EffectSQUEEZE**
 
 Options:
 * *bool* **forward** - the option defines a direction of animation which will be applied.
+
+------------
