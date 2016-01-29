@@ -9,14 +9,11 @@ ShaderEffect {
     property variant dstSampler: textureDestination
 
     property real progress: 0.0
-    property real blocksize: 5.0
 
     fragmentShader: "
 uniform sampler2D srcSampler;
 uniform sampler2D dstSampler;
 uniform float progress;
-
-uniform float blocksize;
 
 varying highp vec2 qt_TexCoord0;
 
