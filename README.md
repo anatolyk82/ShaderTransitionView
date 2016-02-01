@@ -158,5 +158,7 @@ Options:
 
 ------------
 
-Experimentally I made similar effects with video. On the video below it's possible to see.
+### An experiment
+
+Experimentally I made similar effects with video as a source. On the video below it's possible to see how it works.
 [![ScreenShot](https://img-fotki.yandex.ru/get/68556/603575.21/0_d2fd4_2407de61_orig)](https://youtu.be/Sk99oeZu62g)
