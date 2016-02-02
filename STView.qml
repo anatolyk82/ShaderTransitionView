@@ -55,11 +55,35 @@ ShaderTransitionView {
         }
     }
 
-
     function clear()
     {
         itemList.splice( 0, itemList.length )
         depth = itemList.length
+    }
+
+    function completeTransition()
+    {
+        animProgress.running = false
+        root.progress = 1.0
+    }
+
+    function get( index )
+    {
+        var pathItem = ""
+        if( index < itemList.length ) {
+            pathItem = itemList[ index ]
+            itemList.splice( index, 1 )
+            depth = itemList.length
+            if( (itemList.length % 2) == 0 ) {
+                loaderNextItem.source = itemList[ pathItem ]
+                currentItem = loaderNextItem.source
+            } else {
+                loaderCurrentItem.source = itemList[ pathItem ]
+                currentItem = loaderCurrentItem.source
+            }
+        }
+
+        return pathItem
     }
 
     function __graphEffect()
@@ -91,6 +115,8 @@ ShaderTransitionView {
             retFile = "private/ShaderEffectPolkaDots.qml"
         } else if (  shaderEffect == ShaderTransitionView.EffectSQUEEZE ) {
             retFile = "private/ShaderEffectSqueeze.qml"
+        } else if (  shaderEffect == ShaderTransitionView.EffectHORIZONTALSLIDE ) {
+            retFile = "private/ShaderEffectHorizontalSlide.qml"
         }
         return retFile
     }

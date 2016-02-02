@@ -39,7 +39,9 @@ public:
         EffectFADECOLOR,
         EffectMORPH,
         EffectPOLKADOTS,
-        EffectSQUEEZE
+        EffectSQUEEZE,
+        EffectHORIZONTALSLIDE,
+        EffectVERTICALSLIDE
 
     };
     ShaderEffect shaderEffect() const { return m_shaderEffect;
