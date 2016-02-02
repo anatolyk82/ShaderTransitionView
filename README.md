@@ -42,7 +42,7 @@ Properties:
 * *int* **depth** - the property defines the number of items currently pushed onto the stack.
 * *string* **currentItem** - the property defines the current QML file.
 * *Array* **shaderEffectOptions** - a javascript array to set options for the current transition.
-* *enum* **shaderEffect** - it defines which shader effects will be applied for the next transition.
+* *enum* **shaderEffect** - the property defines which shader effect will be applied for the next transition.
 
 
 Methods:

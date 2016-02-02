@@ -2,3 +2,4 @@ module ShaderTransitionView
 plugin ShaderTransitionView
 
 STView 1.0 STView.qml
+STVideoView 1.0 STVideoView.qml
