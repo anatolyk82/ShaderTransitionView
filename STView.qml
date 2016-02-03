@@ -117,6 +117,8 @@ ShaderTransitionView {
             retFile = "private/ShaderEffectSqueeze.qml"
         } else if (  shaderEffect == ShaderTransitionView.EffectHORIZONTALSLIDE ) {
             retFile = "private/ShaderEffectHorizontalSlide.qml"
+        } else if (  shaderEffect == ShaderTransitionView.EffectVERTICALSLIDE ) {
+            retFile = "private/ShaderEffectVerticalSlide.qml"
         }
         return retFile
     }

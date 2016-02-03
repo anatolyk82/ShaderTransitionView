@@ -28,7 +28,8 @@ PLUGIN_PRIVATE = private/ShaderEffectCircleOpen.qml \
     private/ShaderEffectWind.qml \
     private/ShaderEffectPolkaDots.qml \
     private/ShaderEffectSqueeze.qml \
-    private/ShaderEffectHorizontalSlide.qml
+    private/ShaderEffectHorizontalSlide.qml \
+    private/ShaderEffectVerticalSlide.qml
 
 DISTFILES = qmldir \
     STView.qml \
