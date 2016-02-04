@@ -2,6 +2,9 @@
 #define SHADERTRANSITIONVIEW_H
 
 #include <QQuickItem>
+#include <QStack>
+#include <QDebug>
+#include <QQmlComponent>
 
 class ShaderTransitionView : public QQuickItem
 {
@@ -17,35 +20,65 @@ public:
     ~ShaderTransitionView();
 
     enum ShaderEffect {
-        Effect01,
-        Effect02,
-        Effect03,
-        Effect04,
-        Effect05,
-        Effect06,
-        Effect07,
-        Effect08,
-        Effect09,
-        Effect10,
         EffectWIND,
+        ST_Wind,
         EffectPINWHEEL,
+        ST_PinWheel,
         EffectCIRCLEOPEN,
+        ST_CircleOpen,
         EffectDIRECTIONALWIPE,
+        ST_DirectionalWipe,
         EffectRADIALWIPE,
+        ST_RadialWipe,
         EffectPIXELIZE,
+        ST_Pixelize,
         EffectFLIP,
+        ST_Flip,
         EffectFOLD,
+        ST_Fold,
         EffectDOORWAY,
+        ST_Doorway,
         EffectFADECOLOR,
+        ST_FadeColor,
         EffectMORPH,
+        ST_Morph,
         EffectPOLKADOTS,
+        ST_PolkaDots,
         EffectSQUEEZE,
+        ST_Squeeze,
         EffectHORIZONTALSLIDE,
-        EffectVERTICALSLIDE
+        ST_HorizontalSlide,
+        EffectVERTICALSLIDE,
+        ST_VerticalSlide
 
     };
-    ShaderEffect shaderEffect() const { return m_shaderEffect;
-                                      }
+    ShaderEffect shaderEffect() const { return m_shaderEffect; }
+
+    Q_INVOKABLE void pushQQuickItem( QQmlComponent* item ) { m_insideStack.push(item); }
+    Q_INVOKABLE QQmlComponent* popQQuickItem() {
+        if( m_insideStack.length() > 0 ) {
+            return m_insideStack.pop();
+        } else {
+            return NULL;
+        }
+    }
+    Q_INVOKABLE int lengthQQuickStack() { return m_insideStack.length(); }
+    Q_INVOKABLE QQmlComponent* topQQuickItem() {
+        if( m_insideStack.length() > 0 ) {
+            return m_insideStack.top();
+        } else {
+            return NULL;
+        }
+    }
+    Q_INVOKABLE void clearQQuickStack() { m_insideStack.clear(); }
+    Q_INVOKABLE QQmlComponent* getQQuickItem( int index ) {
+        if( (index > 0) && (index < m_insideStack.length() ) ) {
+            return m_insideStack.takeAt( index );
+        } else {
+            return NULL;
+        }
+    }
+
 public slots:
     void setShaderEffect(ShaderEffect shaderEffect)
     {
@@ -61,6 +94,8 @@ signals:
 
 private:
     ShaderEffect m_shaderEffect;
+
+    QStack<QQmlComponent*> m_insideStack;
 };
 
 #endif // SHADERTRANSITIONVIEW_H

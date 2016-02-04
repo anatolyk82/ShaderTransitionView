@@ -36,6 +36,8 @@ Here *STView* is a QML element which provides stack-based navigation model with 
 
 ### STView
 
+**STView** is a QML element which provides a stack-based navigation model with different animation effects between two views.
+
 Properties:
 
 * *int* **duration** - the property defines how long the animation lasts (milliseconds).
@@ -47,11 +49,12 @@ Properties:
 
 Methods:
 
-* *void* **push(** *string* qmlfile **)** - it puts the next view into the stack. An animation will be applied to change the current view.
+* *void* **push(** *string* qmlfile **)** - it takes a path to a QML file as an argument which represents the next QML view and puts it into the stack. An animation will be applied to change the current view.
+* *void* **pushItem(** *QQmlComponent* item **)** - it puts the next view represented as a QML component into the stack. An animation will be applied to change the current view.
 * *void* **pop()** - it removes the last view from the stack. An animation will be applied to change the current view.
 * *void* **clear()** - it removes all views from the stack.
 * *void* **completeTransition()** - It mmmediately completes any transition.
-* *string* **get(** *int* index **)** - It returns the item at position index in the stack and the item will be forced to load.
+* *TYPE* **top()** - It returns the stack's top item. If the top element is a path than *TYPE* is a string, otherwise it is *QQmlComponent*.
 
 
 
@@ -166,6 +169,14 @@ Options:
 * *bool* **forward** - the option defines a direction of animation which will be applied.
 
 ------------
+
+**ShaderTransitionView.EffectVERTICALSLIDE**
+
+Options:
+* *bool* **forward** - the option defines a direction of animation which will be applied.
+
+------------
+
 
 ### An experiment
 

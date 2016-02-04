@@ -13,6 +13,10 @@ ShaderTransitionView {
     property var shaderEffectOptions: { "progress":0.0 }
     shaderEffect: ShaderTransitionView.EffectWIND
 
+    /*onDepthChanged: {
+        console.log("["+itemList + "]:" + depth)
+    }*/
+
     function push( itemPath )
     {
         itemList.push( itemPath )
@@ -22,17 +26,13 @@ ShaderTransitionView {
         if( itemList.length > 1 ) {
             if( (itemList.length % 2) == 0 ) {
                 loaderNextItem.source = itemPath
-                //console.log("(push) l="+itemList.length + " [" + itemList + "] use NEXT")
             } else {
                 loaderCurrentItem.source = itemPath
-                //console.log("(push) l="+itemList.length + " [" + itemList + "] use CURR")
             }
 
-            //loaderShaderEffect.source = shaderEffect
             loaderShaderEffect.setSource( __graphEffect(), shaderEffectOptions )
         } else {
             loaderCurrentItem.source = itemPath
-            //console.log("(push) l="+itemList.length + " [" + itemList + "] use CURR")
         }
     }
 
@@ -41,24 +41,77 @@ ShaderTransitionView {
         if( itemList.length > 1 ) {
             itemList.pop()
             depth = itemList.length
-            if( (itemList.length % 2) == 0 ) {
-                loaderNextItem.source = itemList[ (itemList.length-1) ]
-                currentItem = loaderNextItem.source
-                //console.log("(pop) l="+itemList.length + " [" + itemList + "] use NEXT")
-            } else {
-                loaderCurrentItem.source = itemList[ (itemList.length-1) ]
-                currentItem = loaderCurrentItem.source
-                //console.log("(pop) l="+itemList.length + " [" + itemList + "] use CURR")
-            }
 
+            var lastElement = itemList[ (itemList.length-1) ]
+            if( lastElement.indexOf("ShaderTransitionView::component:") == 0 )
+            {
+                var item = topQQuickItem()
+                if( lengthQQuickStack() > 1 ) {
+                    item = popQQuickItem()
+                }
+
+                if( (itemList.length % 2) == 0 ) {
+                    loaderNextItem.sourceComponent = item
+                } else {
+                    loaderCurrentItem.sourceComponent = item
+                }
+            }
+            else
+            {
+                if( (itemList.length % 2) == 0 ) {
+                    loaderNextItem.source = itemList[ (itemList.length-1) ]
+                    currentItem = loaderNextItem.source
+                    //console.log("(pop) l="+itemList.length + " [" + itemList + "] use NEXT")
+                } else {
+                    loaderCurrentItem.source = itemList[ (itemList.length-1) ]
+                    currentItem = loaderCurrentItem.source
+                    //console.log("(pop) l="+itemList.length + " [" + itemList + "] use CURR")
+                }
+            }
             loaderShaderEffect.setSource( __graphEffect(), shaderEffectOptions )
         }
     }
 
     function clear()
     {
+        clearQQuickStack()
         itemList.splice( 0, itemList.length )
         depth = itemList.length
+    }
+
+    function top()
+    {
+        var lastElement = itemList[ (itemList.length-1) ]
+        if( lastElement.indexOf("ShaderTransitionView::component:") == 0 )
+        {
+            return topQQuickItem()
+        }
+        else
+        {
+            return lastElement
+        }
+    }
+
+    function pushItem( item )
+    {
+        var cmp = "ShaderTransitionView::component:" + lengthQQuickStack()
+        pushQQuickItem( item )
+        itemList.push( cmp )
+
+        currentItem = cmp
+        depth = itemList.length
+
+        if( itemList.length > 1 ) {
+            if( (itemList.length % 2) == 0 ) {
+                loaderNextItem.sourceComponent = item
+            } else {
+                loaderCurrentItem.sourceComponent = item
+            }
+
+            loaderShaderEffect.setSource( __graphEffect(), shaderEffectOptions )
+        } else {
+            loaderCurrentItem.sourceComponent = item
+        }
     }
 
     function completeTransition()
@@ -67,23 +120,39 @@ ShaderTransitionView {
         root.progress = 1.0
     }
 
-    function get( index )
+    function __get( index )
     {
-        var pathItem = ""
-        if( index < itemList.length ) {
-            pathItem = itemList[ index ]
+        var item = ""
+
+        if( (index < itemList.length) && (index >= 0) )
+        {
+            item = itemList[ index ]
+            currentItem = item
+
             itemList.splice( index, 1 )
             depth = itemList.length
-            if( (itemList.length % 2) == 0 ) {
-                loaderNextItem.source = itemList[ pathItem ]
-                currentItem = loaderNextItem.source
-            } else {
-                loaderCurrentItem.source = itemList[ pathItem ]
-                currentItem = loaderCurrentItem.source
+
+            if( item.indexOf("ShaderTransitionView::component:") == 0 )
+            {
+                var indxInsideStack = item.split(":")[3]
+                console.log("indxInsideStack="+indxInsideStack)
+                /*if( (itemList.length % 2) == 0 ) {
+                    loaderNextItem.sourceComponent = getQQuickItem(indxInsideStack)
+                } else {
+                    loaderCurrentItem.sourceComponent = getQQuickItem(indxInsideStack)
+                }*/
+            }
+            else
+            {
+                /*if( (itemList.length % 2) == 0 ) {
+                    loaderNextItem.source = item
+                } else {
+                    loaderCurrentItem.source = item
+                }*/
             }
         }
 
-        return pathItem
+        return item
     }
 
     function __graphEffect()
@@ -141,9 +210,11 @@ ShaderTransitionView {
             script: {
                 if( (itemList.length % 2) ) {
                     loaderNextItem.source = ""
+                    loaderNextItem.sourceComponent = undefined
                     //console.log("(clear NEXT) l="+itemList.length)
                 } else {
                     loaderCurrentItem.source = ""
+                    loaderCurrentItem.sourceComponent = undefined
                     //console.log("(clear CURR) l="+itemList.length)
                 }
                 loaderShaderEffect.source = ""
@@ -156,16 +227,22 @@ ShaderTransitionView {
     Loader {
         id: loaderCurrentItem
         anchors.fill: parent
-        onLoaded: {
-            //console.log("(CURR) Loaded:"+source)
+        /*onLoaded: {
+            console.log("(CURR) Loaded:"+source)
         }
+        onStatusChanged: {
+            console.log("(CURR) status:"+status)
+        }*/
     }
     Loader {
         id: loaderNextItem
         anchors.fill: parent
-        onLoaded: {
-            //console.log("(NEXT) Loaded:"+source)
+        /*onLoaded: {
+            console.log("(NEXT) Loaded:"+source)
         }
+        onStatusChanged: {
+            console.log("(NEXT) status:"+status)
+        }*/
     }
 
 
