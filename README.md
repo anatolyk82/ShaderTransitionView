@@ -180,6 +180,14 @@ Options:
 
 ------------
 
+**ShaderTransitionView.EffectCROSSZOOM**
+
+Options:
+* *bool* **forward** - the option defines a direction of animation which will be applied.
+* *real* **strength** - the option defines an intensity of this a zoom animation.
+
+------------
+
 
 ### An experiment
 

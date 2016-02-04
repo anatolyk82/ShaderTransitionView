@@ -49,7 +49,9 @@ public:
         EffectHORIZONTALSLIDE,
         ST_HorizontalSlide,
         EffectVERTICALSLIDE,
-        ST_VerticalSlide
+        ST_VerticalSlide,
+        EffectCROSSZOOM,
+        ST_CrossZoom
 
     };
     ShaderEffect shaderEffect() const { return m_shaderEffect; }

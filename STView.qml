@@ -194,6 +194,8 @@ ShaderTransitionView {
             retFile = "private/ShaderEffectHorizontalSlide.qml"
         } else if (  shaderEffect == ShaderTransitionView.EffectVERTICALSLIDE ) {
             retFile = "private/ShaderEffectVerticalSlide.qml"
+        } else if (  shaderEffect == ShaderTransitionView.EffectCROSSZOOM ) {
+            retFile = "private/ShaderEffectCrossZoom.qml"
         }
         return retFile
     }
