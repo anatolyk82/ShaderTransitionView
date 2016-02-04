@@ -45,7 +45,8 @@ Properties:
 * *string* **currentItem** - the property defines the current QML file.
 * *Array* **shaderEffectOptions** - a javascript array to set options for the current transition.
 * *enum* **shaderEffect** - the property defines which shader effect will be applied for the next transition.
-
+* *real* **progress** - it shows the progress of animation. The value changes from 0.0 to 1.0.
+* *alias* **easing** - it specifies the easing curve used for the animation.
 
 Methods:
 
@@ -54,9 +55,11 @@ Methods:
 * *void* **pop()** - it removes the last view from the stack. An animation will be applied to change the current view.
 * *void* **clear()** - it removes all views from the stack.
 * *void* **completeTransition()** - It mmmediately completes any transition.
-* *TYPE* **top()** - It returns the stack's top item. If the top element is a path than *TYPE* is a string, otherwise it is *QQmlComponent*.
+* *TYPE* **top()** - it returns the stack's top item. If the top element is a path than *TYPE* is a string, otherwise it is *QQmlComponent*.
 
-
+Signals:
+* **animationStarted()** - this signal is emitted when the animation starts.
+* **animationCompleted()** - this signal is emitted when the animation finishes.
 
 ### Transitions
 

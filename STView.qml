@@ -13,6 +13,12 @@ ShaderTransitionView {
     property var shaderEffectOptions: { "progress":0.0 }
     shaderEffect: ShaderTransitionView.EffectWIND
 
+    signal animationStarted();
+    signal animationCompleted();
+
+    property real progress: 0.0
+    property alias easing: animProperty.easing
+
     /*onDepthChanged: {
         console.log("["+itemList + "]:" + depth)
     }*/
@@ -193,15 +199,16 @@ ShaderTransitionView {
     }
 
 
-    property real progress: 0.0
     SequentialAnimation on progress {
         id: animProgress
         running: false
         ScriptAction {
             script: {
+                root.animationStarted()
             }
         }
         PropertyAnimation {
+            id: animProperty
             from: 0.0
             to: 1.0
             duration: root.duration
@@ -219,6 +226,8 @@ ShaderTransitionView {
                 }
                 loaderShaderEffect.source = ""
                 shaderEffectOptions = { "progress":0.0 }
+
+                root.animationCompleted()
             }
         }
     }
@@ -227,22 +236,10 @@ ShaderTransitionView {
     Loader {
         id: loaderCurrentItem
         anchors.fill: parent
-        /*onLoaded: {
-            console.log("(CURR) Loaded:"+source)
-        }
-        onStatusChanged: {
-            console.log("(CURR) status:"+status)
-        }*/
     }
     Loader {
         id: loaderNextItem
         anchors.fill: parent
-        /*onLoaded: {
-            console.log("(NEXT) Loaded:"+source)
-        }
-        onStatusChanged: {
-            console.log("(NEXT) status:"+status)
-        }*/
     }
 
 
