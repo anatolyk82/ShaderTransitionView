@@ -188,6 +188,14 @@ Options:
 
 ------------
 
+**ShaderTransitionView.EffectSWIRL**
+
+Options:
+* *bool* **forward** - the option defines a direction of animation which will be applied. If it is *true* it twists clockwise.
+* *real* **rotation** - the option defines how many turnovers will be applied.
+
+------------
+
 
 ### An experiment
 
