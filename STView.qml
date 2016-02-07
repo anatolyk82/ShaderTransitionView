@@ -166,6 +166,8 @@ ShaderTransitionView {
         var retFile = "private/ShaderEffectWind.qml"
         if( transition == ShaderTransitionView.EffectWIND ) {
             retFile = "private/ShaderEffectWind.qml"
+        } else if (  transition == ShaderTransitionView.EffectVERTICALWIND ) {
+            retFile = "private/ShaderEffectVerticalWind.qml"
         } else if (  transition == ShaderTransitionView.EffectPINWHEEL ) {
             retFile = "private/ShaderEffectPinWheel.qml"
         } else if (  transition == ShaderTransitionView.EffectCIRCLEOPEN ) {

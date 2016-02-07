@@ -22,6 +22,8 @@ public:
     enum ShaderEffect {
         EffectWIND,
         ST_Wind,
+        EffectVERTICALWIND,
+        ST_VerticalWind,
         EffectPINWHEEL,
         ST_PinWheel,
         EffectCIRCLEOPEN,

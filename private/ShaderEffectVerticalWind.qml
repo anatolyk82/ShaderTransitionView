@@ -30,8 +30,8 @@ float rand (vec2 co) {
 varying highp vec2 qt_TexCoord0;
 
 void main() {
-    float r = rand(vec2(0, qt_TexCoord0.y));
-    float m = smoothstep(0.0, -size, qt_TexCoord0.x*(1.0-size) + size*r - ((forward ? (1.0-progress) : progress ) * (1.0 + size)));
+    float r = rand(vec2(0, qt_TexCoord0.x));
+    float m = smoothstep(0.0, -size, qt_TexCoord0.y*(1.0-size) + size*r - ((forward ? (1.0-progress) : progress ) * (1.0 + size)));
     gl_FragColor = mix(texture2D(srcSampler, qt_TexCoord0), texture2D(dstSampler, qt_TexCoord0), forward ? 1.0-m : m);
 }
 "

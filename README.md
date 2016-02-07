@@ -13,7 +13,7 @@ https://youtu.be/oHp6sP0mv0o)
 
 **STView** is a QML element which provides a stack-based navigation model with different animation effects between two views.
 
-Import Statement: *import ShaderTransitionView 1.0*
+Import statement: ```import ShaderTransitionView 1.0```
 
 Properties:
 
@@ -42,6 +42,14 @@ Signals:
 ### Transitions
 
 **ShaderTransitionView.EffectWIND**
+
+Options:
+* *bool* **forward** - the option defines a direction of animation which will be applied.
+* *real* **size** - the option defines the size of transition zone during the animation between two views. This variable can take a value from 0.0 to 1.0
+
+------------
+
+**ShaderTransitionView.EffectVERTICALWIND**
 
 Options:
 * *bool* **forward** - the option defines a direction of animation which will be applied.
@@ -177,8 +185,8 @@ Options:
 
 ### How to use it
 
-The video above shows that the content of QML pages can be various. It doesn't matter whether a QML page has maps or any interactive element such Buttons or ListView for instance or maybe it's just a static picture.
-  Let's have a look how to use the plugin:
+The video above shows that the content of QML pages can be various. It doesn't matter whether a QML page has maps or any interactive element such as Button or ListView for instance or maybe it's just a static picture.
+Let's have a look how to use the plugin in QML:
 
 ```QML
 import QtQuick 2.5
@@ -204,6 +212,8 @@ Window {
 }
 ```
 We created a new window and filled it by *STView*. By calling the method *push(...)* in *Component.onCompleted* in such a way *specialView.push( "PageExample1.qml" )* we put a QML page *PageExample1.qml* into the stack so the page *PageExample1.qml* will be displayed when the window appears. Next time when we want to change the current view by the next one, we need to call the same method *push(...)* or we there is one more similar method *pushItem(...)* in *STView* which puts the next view represented as *QQmlComponent*.
+Here is another example:
+
 ```QML
 import QtQuick 2.5
 import QtQuick.Window 2.2
@@ -264,7 +274,7 @@ The method *pop()* removes the current page from the stack and displays the prev
   stView.transitionOptions = { "forward":true }
   stView.pushItem( componentPage3 )
 ```
-
+Transitions and options for each transition can be changed during navigation through the stack.
 
 
 ### An experiment
