@@ -10,8 +10,8 @@ ShaderTransitionView {
     property var itemList: []
     property int depth: 0
     property string currentItem: ""
-    property var shaderEffectOptions: { "progress":0.0 }
-    shaderEffect: ShaderTransitionView.EffectWIND
+    property var transitionOptions: { "progress":0.0 }
+    transition: ShaderTransitionView.EffectWIND
 
     signal animationStarted();
     signal animationCompleted();
@@ -36,7 +36,7 @@ ShaderTransitionView {
                 loaderCurrentItem.source = itemPath
             }
 
-            loaderShaderEffect.setSource( __graphEffect(), shaderEffectOptions )
+            loaderShaderEffect.setSource( __graphEffect(), transitionOptions )
         } else {
             loaderCurrentItem.source = itemPath
         }
@@ -74,7 +74,7 @@ ShaderTransitionView {
                     //console.log("(pop) l="+itemList.length + " [" + itemList + "] use CURR")
                 }
             }
-            loaderShaderEffect.setSource( __graphEffect(), shaderEffectOptions )
+            loaderShaderEffect.setSource( __graphEffect(), transitionOptions )
         }
     }
 
@@ -114,7 +114,7 @@ ShaderTransitionView {
                 loaderCurrentItem.sourceComponent = item
             }
 
-            loaderShaderEffect.setSource( __graphEffect(), shaderEffectOptions )
+            loaderShaderEffect.setSource( __graphEffect(), transitionOptions )
         } else {
             loaderCurrentItem.sourceComponent = item
         }
@@ -164,39 +164,39 @@ ShaderTransitionView {
     function __graphEffect()
     {
         var retFile = "private/ShaderEffectWind.qml"
-        if( shaderEffect == ShaderTransitionView.EffectWIND ) {
+        if( transition == ShaderTransitionView.EffectWIND ) {
             retFile = "private/ShaderEffectWind.qml"
-        } else if (  shaderEffect == ShaderTransitionView.EffectPINWHEEL ) {
+        } else if (  transition == ShaderTransitionView.EffectPINWHEEL ) {
             retFile = "private/ShaderEffectPinWheel.qml"
-        } else if (  shaderEffect == ShaderTransitionView.EffectCIRCLEOPEN ) {
+        } else if (  transition == ShaderTransitionView.EffectCIRCLEOPEN ) {
             retFile = "private/ShaderEffectCircleOpen.qml"
-        } else if (  shaderEffect == ShaderTransitionView.EffectDIRECTIONALWIPE ) {
+        } else if (  transition == ShaderTransitionView.EffectDIRECTIONALWIPE ) {
             retFile = "private/ShaderEffectDirectionalWipe.qml"
-        } else if (  shaderEffect == ShaderTransitionView.EffectRADIALWIPE ) {
+        } else if (  transition == ShaderTransitionView.EffectRADIALWIPE ) {
             retFile = "private/ShaderEffectRadialWipe.qml"
-        } else if (  shaderEffect == ShaderTransitionView.EffectPIXELIZE ) {
+        } else if (  transition == ShaderTransitionView.EffectPIXELIZE ) {
             retFile = "private/ShaderEffectPixelize.qml"
-        } else if (  shaderEffect == ShaderTransitionView.EffectFLIP ) {
+        } else if (  transition == ShaderTransitionView.EffectFLIP ) {
             retFile = "private/ShaderEffectFlip.qml"
-        } else if (  shaderEffect == ShaderTransitionView.EffectFOLD ) {
+        } else if (  transition == ShaderTransitionView.EffectFOLD ) {
             retFile = "private/ShaderEffectFold.qml"
-        } else if (  shaderEffect == ShaderTransitionView.EffectDOORWAY ) {
+        } else if (  transition == ShaderTransitionView.EffectDOORWAY ) {
             retFile = "private/ShaderEffectDoorway.qml"
-        } else if (  shaderEffect == ShaderTransitionView.EffectFADECOLOR ) {
+        } else if (  transition == ShaderTransitionView.EffectFADECOLOR ) {
             retFile = "private/ShaderEffectFadeColor.qml"
-        } else if (  shaderEffect == ShaderTransitionView.EffectMORPH ) {
+        } else if (  transition == ShaderTransitionView.EffectMORPH ) {
             retFile = "private/ShaderEffectMorph.qml"
-        } else if (  shaderEffect == ShaderTransitionView.EffectPOLKADOTS ) {
+        } else if (  transition == ShaderTransitionView.EffectPOLKADOTS ) {
             retFile = "private/ShaderEffectPolkaDots.qml"
-        } else if (  shaderEffect == ShaderTransitionView.EffectSQUEEZE ) {
+        } else if (  transition == ShaderTransitionView.EffectSQUEEZE ) {
             retFile = "private/ShaderEffectSqueeze.qml"
-        } else if (  shaderEffect == ShaderTransitionView.EffectHORIZONTALSLIDE ) {
+        } else if (  transition == ShaderTransitionView.EffectHORIZONTALSLIDE ) {
             retFile = "private/ShaderEffectHorizontalSlide.qml"
-        } else if (  shaderEffect == ShaderTransitionView.EffectVERTICALSLIDE ) {
+        } else if (  transition == ShaderTransitionView.EffectVERTICALSLIDE ) {
             retFile = "private/ShaderEffectVerticalSlide.qml"
-        } else if (  shaderEffect == ShaderTransitionView.EffectCROSSZOOM ) {
+        } else if (  transition == ShaderTransitionView.EffectCROSSZOOM ) {
             retFile = "private/ShaderEffectCrossZoom.qml"
-        } else if (  shaderEffect == ShaderTransitionView.EffectSWIRL ) {
+        } else if (  transition == ShaderTransitionView.EffectSWIRL ) {
             retFile = "private/ShaderEffectSwirl.qml"
         }
         return retFile
@@ -229,7 +229,7 @@ ShaderTransitionView {
                     //console.log("(clear CURR) l="+itemList.length)
                 }
                 loaderShaderEffect.source = ""
-                shaderEffectOptions = { "progress":0.0 }
+                transitionOptions = { "progress":0.0 }
 
                 root.animationCompleted()
             }

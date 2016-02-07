@@ -11,7 +11,7 @@ class ShaderTransitionView : public QQuickItem
     Q_OBJECT
     Q_DISABLE_COPY(ShaderTransitionView)
 
-    Q_PROPERTY(ShaderEffect shaderEffect READ shaderEffect WRITE setShaderEffect NOTIFY shaderEffectChanged)
+    Q_PROPERTY(ShaderEffect transition READ transition WRITE setTransition NOTIFY transitionChanged)
 
     Q_ENUMS(ShaderEffect)
 
@@ -56,7 +56,7 @@ public:
         ST_Swirl
 
     };
-    ShaderEffect shaderEffect() const { return m_shaderEffect; }
+    ShaderEffect transition() const { return m_transition; }
 
     Q_INVOKABLE void pushQQuickItem( QQmlComponent* item ) { m_insideStack.push(item); }
     Q_INVOKABLE QQmlComponent* popQQuickItem() {
@@ -84,20 +84,20 @@ public:
     }
 
 public slots:
-    void setShaderEffect(ShaderEffect shaderEffect)
+    void setTransition(ShaderEffect transition)
     {
-        if (m_shaderEffect == shaderEffect)
+        if (m_transition == transition)
             return;
 
-        m_shaderEffect = shaderEffect;
-        emit shaderEffectChanged(shaderEffect);
+        m_transition = transition;
+        emit transitionChanged(transition);
     }
 
 signals:
-    void shaderEffectChanged(ShaderEffect shaderEffect);
+    void transitionChanged(ShaderEffect transition);
 
 private:
-    ShaderEffect m_shaderEffect;
+    ShaderEffect m_transition;
 
     QStack<QQmlComponent*> m_insideStack;
 };
