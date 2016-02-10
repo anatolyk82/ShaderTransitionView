@@ -200,6 +200,8 @@ ShaderTransitionView {
             retFile = "private/ShaderEffectCrossZoom.qml"
         } else if (  transition == ShaderTransitionView.EffectSWIRL ) {
             retFile = "private/ShaderEffectSwirl.qml"
+        } else if (  transition == ShaderTransitionView.EffectLINEARBLUR ) {
+            retFile = "private/ShaderEffectLinearBlur.qml"
         }
         return retFile
     }

@@ -55,7 +55,9 @@ public:
         EffectCROSSZOOM,
         ST_CrossZoom,
         EffectSWIRL,
-        ST_Swirl
+        ST_Swirl,
+        EffectLINEARBLUR,
+        ST_LinearBlur
 
     };
     ShaderEffect transition() const { return m_transition; }

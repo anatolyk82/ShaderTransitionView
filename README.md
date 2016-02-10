@@ -184,6 +184,12 @@ Options:
 
 ------------
 
+**ShaderTransitionView.EffectLINEARBLUR**
+
+Options:
+* *real* **intensity** - the option defines the intensity of blur effect.
+
+------------
 
 ### How to use it
 
