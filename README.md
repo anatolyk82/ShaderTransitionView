@@ -6,7 +6,9 @@ To learn more about the project visit [wiki pages](https://github.com/anatolyk82
 
  This short video can show some of those transitions.
 [![ScreenShot](https://img-fotki.yandex.ru/get/68556/603575.21/0_d2fd4_2407de61_orig)](
-https://youtu.be/oHp6sP0mv0o)
+https://youtu.be/rS-fmlKRQ3s)
+
+ There is a demo application which shows how *ShaderTransitionView* actually works. The app can be found [here](https://github.com/anatolyk82/ShaderTransitionViewDemo).
 
 
 ### STView

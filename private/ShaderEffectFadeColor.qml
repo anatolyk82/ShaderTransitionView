@@ -1,6 +1,8 @@
 import QtQuick 2.0
 
-//Source code from: http://transitions.glsl.io/
+/* Source code from: http://transitions.glsl.io/
+ * http://transitions.glsl.io/transition/f24651a01bf574e90122 by gre
+ */
 
 ShaderEffect {
     anchors.fill: parent
