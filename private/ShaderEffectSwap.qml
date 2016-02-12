@@ -47,11 +47,13 @@ vec4 bgColor (vec2 from, vec2 to) {
   vec4 c = black;
   from = project(from);
   if (inBounds(from)) {
-    c += mix(black, texture2D(srcSampler, from), reflection * mix(1.0, 0.0, 1.0-from.y));
+    vec4 rfl = forward ? texture2D(srcSampler, from) : texture2D(dstSampler, from);
+    c += mix(black, rfl, reflection * mix(1.0, 0.0, 1.0-from.y));
   }
   to = project(to);
   if (inBounds(to)) {
-    c += mix(black, texture2D(dstSampler, to), reflection * mix(1.0, 0.0, 1.0-to.y));
+    vec4 rfl = forward ? texture2D(dstSampler, to) : texture2D(srcSampler, to);
+    c += mix(black, rfl, reflection * mix(1.0, 0.0, 1.0-to.y));
   }
   return c;
 }
@@ -76,9 +78,9 @@ void main() {
   if (fromOver)
   {
     if (inBounds(pfr)) {
-      gl_FragColor = forward ? texture2D( srcSampler, pfr) : texture2D( dstSampler, pfr);
+      gl_FragColor = forward ? texture2D( srcSampler, pfr ) : texture2D( dstSampler, pfr );
     } else if (inBounds(pto)) {
-      gl_FragColor = forward ? texture2D(dstSampler, pto) : texture2D( srcSampler, pto);
+      gl_FragColor = forward ? texture2D( dstSampler, pto ) : texture2D( srcSampler, pto );
     } else {
       gl_FragColor = bgColor(pfr, pto);
     }
@@ -86,9 +88,9 @@ void main() {
   else
   {
     if (inBounds(pto)) {
-      gl_FragColor = forward ? texture2D(dstSampler, pto) : texture2D(srcSampler, pto);
+      gl_FragColor = forward ? texture2D(dstSampler, pto) : texture2D( srcSampler, pto );
     } else if (inBounds(pfr)) {
-      gl_FragColor = forward ? texture2D(srcSampler, pfr) : texture2D(dstSampler, pfr);
+      gl_FragColor = forward ? texture2D( srcSampler, pfr ) : texture2D( dstSampler, pfr );
     } else {
       gl_FragColor = bgColor(pfr, pto);
     }

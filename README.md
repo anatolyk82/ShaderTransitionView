@@ -115,10 +115,12 @@ Options:
 **ShaderTransitionView.EffectDOORWAY**
 
 Options:
-* *bool* **forward** - the option defines a direction of animation which will be applied.
-* *real* **reflection** -
-* *real* **perspective** -
-* *real* **depth** -
+* *bool* **forward** - the option defines a direction of animation which will be applied. The default value is *true*.
+* *real* **reflection** - the option defines how intensively the reflection is. The default value is *0.4*.
+* *real* **perspective** - the option defines how much the foreground view has a perspective effect when it's opening. The closer the value to zero the less the perspective effect is. The default value is *0.4*.
+* *real* **depth** - the option defines how deep one goes away back replacing by the next one. The default value is *2*.
+
+Read [more](https://github.com/anatolyk82/ShaderTransitionView/wiki/EffectDOORWAY)...
 
 ------------
 
@@ -174,6 +176,8 @@ Options:
 * *bool* **forward** - the option defines a direction of animation which will be applied.
 * *real* **strength** - the option defines an intensity of this a zoom animation.
 
+Read [more](https://github.com/anatolyk82/ShaderTransitionView/wiki/EffectCROSSZOOM)...
+
 ------------
 
 **ShaderTransitionView.EffectSWIRL**
@@ -182,12 +186,16 @@ Options:
 * *bool* **forward** - the option defines a direction of animation which will be applied. If it is *true* it twists clockwise.
 * *real* **rotation** - the option defines how many turnovers will be applied.
 
+Read [more](https://github.com/anatolyk82/ShaderTransitionView/wiki/EffectSWIRL)...
+
 ------------
 
 **ShaderTransitionView.EffectLINEARBLUR**
 
 Options:
 * *real* **intensity** - the option defines the intensity of blur effect.
+
+Read [more](https://github.com/anatolyk82/ShaderTransitionView/wiki/EffectLINEARBLUR)...
 
 ------------
 
