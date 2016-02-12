@@ -33,7 +33,8 @@ PLUGIN_PRIVATE = private/ShaderEffectCircleOpen.qml \
     private/ShaderEffectCrossZoom.qml \
     private/ShaderEffectSwirl.qml \
     private/ShaderEffectVerticalWind.qml \
-    private/ShaderEffectLinearBlur.qml
+    private/ShaderEffectLinearBlur.qml \
+    private/ShaderEffectSwap.qml
 
 DISTFILES = qmldir \
     STView.qml \

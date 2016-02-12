@@ -57,7 +57,9 @@ public:
         EffectSWIRL,
         ST_Swirl,
         EffectLINEARBLUR,
-        ST_LinearBlur
+        ST_LinearBlur,
+        EffectSWAP,
+        ST_Swap
 
     };
     ShaderEffect transition() const { return m_transition; }

@@ -202,6 +202,8 @@ ShaderTransitionView {
             retFile = "private/ShaderEffectSwirl.qml"
         } else if (  transition == ShaderTransitionView.EffectLINEARBLUR ) {
             retFile = "private/ShaderEffectLinearBlur.qml"
+        } else if (  transition == ShaderTransitionView.EffectSWAP ) {
+            retFile = "private/ShaderEffectSwap.qml"
         }
         return retFile
     }
