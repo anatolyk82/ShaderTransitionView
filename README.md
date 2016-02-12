@@ -191,6 +191,19 @@ Options:
 
 ------------
 
+**ShaderTransitionView.EffectSWAP**
+
+Options:
+* *bool* **forward** - the option defines a direction of animation which will be applied. The default value is *true*.
+* *real* **reflection** - the option defines how intensively the reflection is. The default value is *0.4*.
+* *real* **perspective** - the option defines how far one view turns back replacing by the next one. The default value is *0.2*.
+* *real* **depth** - the option defines how deep one view moves back replacing by the next one. The default value is *3.0*.
+
+Read [more](https://github.com/anatolyk82/ShaderTransitionView/wiki/EffectSWAP)...
+
+------------
+
+
 ### How to use it
 
 The video above shows that the content of QML pages can be various. It doesn't matter whether a QML page has maps or any interactive element such as Button or ListView for instance or maybe it's just a static picture.
