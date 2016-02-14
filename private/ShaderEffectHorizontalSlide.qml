@@ -1,9 +1,5 @@
 import QtQuick 2.0
 
-/* Source code from: http://transitions.glsl.io/
- * http://transitions.glsl.io/transition/ce9279de351984f0ad27 by rectalogic
- */
-
 ShaderEffect {
     anchors.fill: parent
 
@@ -23,39 +19,18 @@ uniform bool forward;
 varying highp vec2 qt_TexCoord0;
 
 void main() {
-    float translateX = forward ? -1.0 : 1.0;
-    const float translateY = 0.0;
 
-    float x = progress * translateX;
-    float y = progress * translateY;
+    float pr = forward ? 1.0 - progress : progress;
 
-    if (x >= 0.0 && y >= 0.0) {
-        if (qt_TexCoord0.x >= x && qt_TexCoord0.y >= y) {
-            gl_FragColor = texture2D(srcSampler, qt_TexCoord0 - vec2(x, y));
-        }
-        else {
-            vec2 uv;
-            if (x > 0.0)
-                uv = vec2(x - 1.0, y);
-            else if (y > 0.0)
-                uv = vec2(x, y - 1.0);
-            gl_FragColor = texture2D(dstSampler, qt_TexCoord0 - uv);
-        }
+    if( qt_TexCoord0.x <= pr ) {
+        gl_FragColor = forward ?
+            texture2D(srcSampler, qt_TexCoord0 + vec2(progress,0.0)) :
+            texture2D(dstSampler, qt_TexCoord0 + vec2((1.0-progress),0.0));
+    } else {
+        gl_FragColor = forward ?
+            texture2D(dstSampler, qt_TexCoord0 - vec2((1.0 - progress),0.0)) :
+            texture2D(srcSampler, qt_TexCoord0 - vec2(progress,0.0));
     }
-    else if (x <= 0.0 && y <= 0.0) {
-        if (qt_TexCoord0.x <= (1.0 + x) && qt_TexCoord0.y <= (1.0 + y))
-            gl_FragColor = texture2D(srcSampler, qt_TexCoord0 - vec2(x, y));
-        else {
-            vec2 uv;
-            if (x < 0.0)
-                uv = vec2(x + 1.0, y);
-            else if (y < 0.0)
-                uv = vec2(x, y + 1.0);
-            gl_FragColor = texture2D(dstSampler, qt_TexCoord0 - uv);
-        }
-    }
-    else
-        gl_FragColor = vec4(0.0);
 }
 "
 

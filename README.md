@@ -87,6 +87,8 @@ Options:
 Options:
 * *bool* **forward** - the option defines a direction of animation which will be applied.
 
+Read [more](https://github.com/anatolyk82/ShaderTransitionView/wiki/EffectRADIALWIPE)...
+
 ------------
 
 
@@ -147,12 +149,16 @@ Options:
 * *bool* **forward** - the option defines a direction of animation which will be applied.
 * *real* **dots** - the option defines how many expanding dots appear on the first view replacing it by the second one.
 
+Read [more](https://github.com/anatolyk82/ShaderTransitionView/wiki/EffectPOLKADOTS)...
+
 ------------
 
 **ShaderTransitionView.EffectSQUEEZE**
 
 Options:
 * *bool* **forward** - the option defines a direction of animation which will be applied.
+
+Read [more](https://github.com/anatolyk82/ShaderTransitionView/wiki/EffectSQUEEZE)...
 
 ------------
 
