@@ -204,6 +204,8 @@ ShaderTransitionView {
             retFile = "private/ShaderEffectLinearBlur.qml"
         } else if (  transition == ShaderTransitionView.EffectSWAP ) {
             retFile = "private/ShaderEffectSwap.qml"
+        } else if (  transition == ShaderTransitionView.EffectCROSSHATCH ) {
+            retFile = "private/ShaderEffectCrossHatch.qml"
         }
         return retFile
     }

@@ -59,7 +59,9 @@ public:
         EffectLINEARBLUR,
         ST_LinearBlur,
         EffectSWAP,
-        ST_Swap
+        ST_Swap,
+        EffectCROSSHATCH,
+        ST_CrossHatch
 
     };
     ShaderEffect transition() const { return m_transition; }
