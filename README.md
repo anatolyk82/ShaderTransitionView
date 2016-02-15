@@ -217,6 +217,15 @@ Read [more](https://github.com/anatolyk82/ShaderTransitionView/wiki/EffectSWAP).
 
 ------------
 
+**ShaderTransitionView.EffectCROSSHATCH**
+
+Options:
+* *bool* **forward** - the option defines a direction of animation which will be applied. The default value is *true*.
+
+Read [more](https://github.com/anatolyk82/ShaderTransitionView/wiki/EffectCROSSHATCH)...
+
+------------
+
 
 ### How to use it
 
